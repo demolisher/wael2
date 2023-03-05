@@ -1,0 +1,145 @@
+*{
+    direction: rtl !important;
+}
+.layout-fixed .main-sidebar {
+    right: 0;
+}
+.brand-image {
+    float: right;
+}
+.content-wrapper, .main-footer, .main-header {
+    margin-left: 0px;
+    margin-right: 200px;
+}
+.mr-auto-navbav{
+    margin-right: auto!important;
+}
+.navbar-expand .navbar-nav .nav-link {
+    padding-right: 1rem;
+    padding-left: 1rem;
+}
+
+[class*=icheck-]>input:first-child:checked+input[type=hidden]+label::after, 
+[class*=icheck-]>input:first-child:checked+label::after {
+    right: 15px;
+    left: auto;
+}
+.nav-sidebar .nav-link>.right, 
+.nav-sidebar .nav-link>p>.right {
+    left: 1rem;
+    right: auto;
+}
+.nav-sidebar .nav-link>.right:nth-child(2), 
+.nav-sidebar .nav-link>p>.right:nth-child(2) {
+    left: 2.2rem;
+    right: auto;
+}
+.small-box .icon>i {
+    left: 15px;
+    right: auto;
+}
+@media (min-width: 992px){
+    .sidebar-mini.sidebar-collapse .content-wrapper, .sidebar-mini.sidebar-collapse .main-footer, .sidebar-mini.sidebar-collapse .main-header {
+        margin-right: 4.6rem!important;
+    }
+    .sidebar-mini.sidebar-collapse .content-wrapper, .sidebar-mini.sidebar-collapse .main-footer, .sidebar-mini.sidebar-collapse .main-header {
+        margin-right: 4.6rem!important;
+        margin-left: 0!important;
+    }
+}
+
+@media (max-width: 767.98px) {
+    .main-sidebar, .main-sidebar::before {
+        box-shadow: none !important;
+        margin-right: -200px;
+    }
+
+    .content-wrapper, .content-wrapper::before, .main-footer, .main-footer::before, .main-header, .main-header::before {
+        margin-right: 0;
+    }
+
+    .sidebar-open .main-sidebar, .sidebar-open .main-sidebar::before {
+        margin-right: 0;
+    }
+}
+.navbar .nav-link {
+    color: white !important;
+}
+.navbar a {
+    color: white !important;
+    text-decoration: none;
+}
+.user-panel{
+    margin-bottom:0 !important;
+    margin-top: 0 !important;
+    padding-bottom: 0 !important;
+    padding-top: 0 !important;
+}
+.img-circle{
+    background-color: white;
+}
+body{
+    font-family: gess, sans-serif !important;
+}
+.page-main-title{
+    padding-bottom: 20px;
+    border-bottom: 1px lightblue solid;
+}
+.profile-name, .profile-menu{
+    border-radius:5px;
+    margin: 10px 0;
+    background-color:#e1e1e1;
+    padding:10px;
+}
+.pr-menu-link{
+    text-decoration: none;
+    padding:5px 10px;
+    color:#222;
+}
+.pr-menu-link:hover{
+    text-decoration: none;
+    color: #293f53;
+    font-weight: 700;
+    transition: font-weight .3s, color .3s linear;
+}
+.edit-pro-btn{
+    padding:8px !important;
+    border-radius: 4px;
+    width: 100% !important;
+    background-color: #098f74;
+    color: white;
+    margin-top: 10px;
+    font-size: 12px;
+}
+.edit-pro-btn:hover{
+    text-decoration: none;
+    color: #fff;
+    background-color: #293f53;
+    transition: all .3s linear;
+}
+.prof-image p{
+    text-align: justify;
+    padding-top: 10px;
+}
+.deps-title{
+    background-color: #ef4b27;
+    color: white;
+}
+.active-link{
+    border-radius: 0 !important;
+    background-color: #f3d131;
+    color: #293f53 !important;
+    text-align: center !important;
+    font-weight: 700;
+}
+.active-link:hover{
+    background-color: #f3d131 !important;
+    color: #293f53 !important;
+}
+.nav-item .nav-icon{
+    margin-left: 10px;
+}
+.vision-logo{
+    width: 120px;
+    height: auto;
+}
