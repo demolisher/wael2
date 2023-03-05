@@ -439,6 +439,8 @@ require 'config.php';
                             $tas_query_run = mysqli_query($conn, $tas_query);
                             if (mysqli_num_rows($tas_query_run) > 0) {
                                 foreach ($tas_query_run as $task) {
+                                    $lev=explode(",",$task['level']);
+                                    if($lev[0]=='المرحلة الابتدائية'){
                             ?>
                                     <tr>
                                         <td><?= $task['name'] ?></td>
@@ -478,7 +480,7 @@ require 'config.php';
                                         </td>
                                     </tr>
                             <?php
-                                }
+                                }}
                             }
                             ?>
                         </tbody>
@@ -529,6 +531,8 @@ require 'config.php';
                             $tas_query_run = mysqli_query($conn, $tas_query);
                             if (mysqli_num_rows($tas_query_run) > 0) {
                                 foreach ($tas_query_run as $task) {
+                                    $lev=explode(",",$task['level']);
+                                    if($lev[0]=='المرحلة المتوسطة'){
                             ?>
                                     <tr>
                                         <td><?= $task['name'] ?></td>
@@ -568,7 +572,7 @@ require 'config.php';
                                         </td>
                                     </tr>
                             <?php
-                                }
+                                }}
                             }
                             ?>
                         </tbody>
@@ -618,6 +622,8 @@ require 'config.php';
                             $tas_query_run = mysqli_query($conn, $tas_query);
                             if (mysqli_num_rows($tas_query_run) > 0) {
                                 foreach ($tas_query_run as $task) {
+                                    $lev=explode(",",$task['level']);
+                                    if($lev[0]=='المرحلة الثانوية'){
                             ?>
                                     <tr>
                                         <td><?= $task['name'] ?></td>
@@ -657,7 +663,7 @@ require 'config.php';
                                         </td>
                                     </tr>
                             <?php
-                                }
+                                }}
                             }
                             ?>
                         </tbody>
