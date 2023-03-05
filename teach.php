@@ -26,7 +26,7 @@ if (mysqli_num_rows($select) > 0) {
       <div class="content-wrapper">
         <?php require_once('includes/components/cont-header.php'); ?>
        
-        <?php require_once('includes/components/tests_forms.php'); ?>
+        <?php require_once('includes/components/teachers_analysis.php'); ?>
       </div>
       <?php require_once('includes/components/footer.php'); ?>
     </div>
