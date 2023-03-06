@@ -56,16 +56,50 @@ require 'config.php';
                             } ?>
                         </select>
                     </div>
-                    <div class="form-group">
-                        <label for="level">المرحلة</label>
-                        <select multiple name="level[]" class="form-select form-control" aria-label="Default select example">
-                            <option value="ابتدائية">الابتدائية</option>
-                            <option value="متوسطة">المتوسطة</option>
-                            <option value="ثانوية">الثانوية</option>
-                            <option value="المسار المصري">المسار المصري</option>
-                            <option value="رياض الأطفال">رياض الأطفال</option>
-                        </select>
+                    <div class="row" style="margin: 5px">
+                    <div class="form-group col-6">
+                        <label>المرحلة الأساسية</label><hr>
+                        <?php
+                            $level_query = "SELECT * FROM levels ORDER BY id";
+                            $level_query_run = mysqli_query($conn, $level_query);
+                            if (mysqli_num_rows($level_query_run) > 0) {
+                                foreach ($level_query_run as $level1) {
+                            ?>
+                            <div class="row">
+                           
+                              <div class="col-1"><input type="radio" id="main-<?php echo $level1['id']?>" name="main_level" value="<?php echo $level1['level']?>"></div>
+                              <div class="col-11"><label for="main-<?php echo $level1['id']?>"><?php echo $level1['level']?></label></div>
+                               
+                            
+                                </div>
+                            
+                                   
+                            <?php }
+                            } ?>
                     </div>
+                    <div class="form-group col-6">
+                        <label>المرحلة المكملة</label><hr>
+                        <?php
+                            $level_query = "SELECT * FROM levels ORDER BY id";
+                            $level_query_run = mysqli_query($conn, $level_query);
+                            if (mysqli_num_rows($level_query_run) > 0) {
+                                foreach ($level_query_run as $level2) {
+                                    
+                            ?>
+                            <div class="row">
+                           
+                              <div class="col-1"><input type="radio" id="comp-<?php echo $level2['id']?>" name="comp_level" value="<?php echo $level2['level']?>"></div>
+                              <div class="col-11"><label for="comp-<?php echo $level2['id']?>"><?php echo $level2['level']?></label></div>
+                               
+                            
+                                </div>
+                            
+                                   
+                            <?php }
+                            } ?>
+                    </div>
+                    </div>
+                    
                     <div class="form-group">
                         <div class="row">
                             <div class="col-8">
