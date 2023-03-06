@@ -5,6 +5,52 @@
 <script src="plugins/datatables/jquery.dataTables.js"></script>
 <script src="plugins/datatables-bs4/js/dataTables.bootstrap4.js"></script>
 <script>
+
+$(document).ready(function() {
+  // get the three input elements
+  var input1 = $('[name="clsNumber1"]');
+  var input2 = $('[name="clsNumber2"]');
+  var input3 = $('[name="clsNumber3"]');
+  
+  // add an event listener to all inputs
+  $('input').on('input', function() {
+    // get the values of the three inputs and calculate their sum
+    var sum = parseInt(input1.val()) + parseInt(input2.val()) + parseInt(input3.val());
+    
+    // check if the sum is greater than 27 and show an alert if it is
+    if (sum > 27) {
+      alert('غير مسموح أن يكون النصاب أكبر من 27');
+    }
+  });
+});
+
+
+$(document).ready(function() {
+  // get both radio groups by their class
+  var group1 = $('[name="main_level"]');
+  var group2 = $('[name="comp_level"]');
+  
+  // when a radio button in group1 is clicked
+  group1.on('click', function() {
+    // get the value of the clicked radio button
+    var selectedValue = $(this).val();
+    
+    // hide the corresponding radio button in group2 and show the other inputs
+    group2.filter('[value="' + selectedValue + '"]').hide();
+    group2.not('[value="' + selectedValue + '"]').show();
+  });
+  
+  // when a radio button in group2 is clicked
+  group2.on('click', function() {
+    // get the value of the clicked radio button
+    var selectedValue = $(this).val();
+    
+    // hide the corresponding radio button in group1 and show the other inputs
+    group1.filter('[value="' + selectedValue + '"]').hide();
+    group1.not('[value="' + selectedValue + '"]').show();
+  });
+});
+
   $(function() {
     $('#myTable').DataTable({
       "paging": true,

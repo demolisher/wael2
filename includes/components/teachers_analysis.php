@@ -57,49 +57,47 @@ require 'config.php';
                         </select>
                     </div>
                     <div class="row" style="margin: 5px">
-                    <div class="form-group col-6">
-                        <label>المرحلة الأساسية</label><hr>
-                        <?php
+                        <div class="form-group col-6">
+                            <label>المرحلة الأساسية</label>
+                            <hr>
+                            <?php
                             $level_query = "SELECT * FROM levels ORDER BY id";
                             $level_query_run = mysqli_query($conn, $level_query);
                             if (mysqli_num_rows($level_query_run) > 0) {
                                 foreach ($level_query_run as $level1) {
                             ?>
-                            <div class="row">
-                           
-                              <div class="col-1"><input type="radio" id="main-<?php echo $level1['id']?>" name="main_level" value="<?php echo $level1['level']?>"></div>
-                              <div class="col-11"><label for="main-<?php echo $level1['id']?>"><?php echo $level1['level']?></label></div>
-                               
-                            
-                                </div>
-                            
-                                   
+                                    <div class="input-group mb-3">
+                                        <div class="input-group-text">
+                                            <input class=" mt-0" type="radio" id="main-<?php echo $level1['id'] ?>" name="main_level" value="<?php echo $level1['level'] ?>">
+                                        </div>
+                                        <input readonly type="text" class="form-control" value="<?php echo $level1['level'] ?>">
+                                    </div>
                             <?php }
                             } ?>
-                    </div>
-                    <div class="form-group col-6">
-                        <label>المرحلة المكملة</label><hr>
-                        <?php
+                        </div>
+                        <div class="form-group col-6">
+                            <label>المرحلة المكملة</label>
+                            <hr>
+                            <?php
                             $level_query = "SELECT * FROM levels ORDER BY id";
                             $level_query_run = mysqli_query($conn, $level_query);
                             if (mysqli_num_rows($level_query_run) > 0) {
                                 foreach ($level_query_run as $level2) {
-                                    
+
                             ?>
-                            <div class="row">
-                           
-                              <div class="col-1"><input type="radio" id="comp-<?php echo $level2['id']?>" name="comp_level" value="<?php echo $level2['level']?>"></div>
-                              <div class="col-11"><label for="comp-<?php echo $level2['id']?>"><?php echo $level2['level']?></label></div>
-                               
-                            
-                                </div>
-                            
-                                   
+                                    <div class="input-group mb-3">
+                                        <div class="input-group-text">
+                                            <input class=" mt-0" type="radio" id="main-<?php echo $level2['id'] ?>" name="comp_level" value="<?php echo $level2['level'] ?>">
+                                        </div>
+                                        <input readonly type="text" class="form-control" value="<?php echo $level2['level'] ?>">
+                                    </div>
+
+
                             <?php }
                             } ?>
+                        </div>
                     </div>
-                    </div>
-                    
+
                     <div class="form-group">
                         <div class="row">
                             <div class="col-8">
@@ -473,48 +471,49 @@ require 'config.php';
                             $tas_query_run = mysqli_query($conn, $tas_query);
                             if (mysqli_num_rows($tas_query_run) > 0) {
                                 foreach ($tas_query_run as $task) {
-                                    $lev=explode(",",$task['level']);
-                                    if($lev[0]=='المرحلة الابتدائية'){
+                                    $lev = explode(",", $task['level']);
+                                    if ($lev[0] == 'المرحلة الابتدائية') {
                             ?>
-                                    <tr>
-                                        <td><?= $task['name'] ?></td>
-                                        <!--                                         <td><?= $task['nationality'] ?></td>
+                                        <tr>
+                                            <td><?= $task['name'] ?></td>
+                                            <!--                                         <td><?= $task['nationality'] ?></td>
                                         
                                         <td><?= $task['level'] ?></td> -->
-                                        <td><?= $task['speciality'] ?></td>
+                                            <td><?= $task['speciality'] ?></td>
 
-                                        <td>
-                                            <?= $task['level'] ?>
-                                        </td>
+                                            <td>
+                                                <?= $task['level'] ?>
+                                            </td>
 
-                                        <td>
-                                            <?= $task['subject1'] ?>
-                                            <?php if ($task['subject2'] != '') {
-                                                echo '<hr>' . $task['subject2'];
-                                            } ?>
+                                            <td>
+                                                <?= $task['subject1'] ?>
+                                                <?php if ($task['subject2'] != '') {
+                                                    echo '<hr>' . $task['subject2'];
+                                                } ?>
 
-                                            <?php if ($task['subject3'] != '') {
-                                                echo '<hr>' . $task['subject3'];
-                                            } ?>
-                                        </td>
-                                        <td>
-                                            <?= $task['clsNumber1'] ?>
-                                            <?php if ($task['clsNumber2'] != '0') {
-                                                echo '<hr>' . $task['clsNumber2'];
-                                            } ?>
-                                            <?php if ($task['clsNumber3'] != '0') {
-                                                echo '<hr>' . $task['clsNumber3'];
-                                            } ?>
-                                        </td>
-                                        <td><?= $task['comple'] ?></td>
-                                        <td class="text-center" style="display: flex;justify-content:center;vertical-align:middle">
-                                            <?php if ($fetch['rule'] != 'data_entry') { ?><button type="button" class="viewStudentBtn btn-primary btn-sm m-1" value="<?= $task['id']; ?>">عرض</button><?php } ?>
-                                            <?php if ($fetch['rule']  != 'data_entry') { ?> <button type="button" class="editStudentBtn btn-warning btn-sm m-1" value="<?= $task['id']; ?>">عدّل</button> <?php } ?>
-                                            <?php if ($fetch['rule']  != 'data_entry') { ?> <button type="button" class="deleteStudentBtn btn-danger btn-sm m-1" value="<?= $task['id']; ?>">حذف</button> <?php } ?>
-                                        </td>
-                                    </tr>
+                                                <?php if ($task['subject3'] != '') {
+                                                    echo '<hr>' . $task['subject3'];
+                                                } ?>
+                                            </td>
+                                            <td>
+                                                <?= $task['clsNumber1'] ?>
+                                                <?php if ($task['clsNumber2'] != '0') {
+                                                    echo '<hr>' . $task['clsNumber2'];
+                                                } ?>
+                                                <?php if ($task['clsNumber3'] != '0') {
+                                                    echo '<hr>' . $task['clsNumber3'];
+                                                } ?>
+                                            </td>
+                                            <td><?= $task['comple'] ?></td>
+                                            <td class="text-center" style="display: flex;justify-content:center;vertical-align:middle">
+                                                <?php if ($fetch['rule'] != 'data_entry') { ?><button type="button" class="viewStudentBtn btn-primary btn-sm m-1" value="<?= $task['id']; ?>">عرض</button><?php } ?>
+                                                <?php if ($fetch['rule']  != 'data_entry') { ?> <button type="button" class="editStudentBtn btn-warning btn-sm m-1" value="<?= $task['id']; ?>">عدّل</button> <?php } ?>
+                                                <?php if ($fetch['rule']  != 'data_entry') { ?> <button type="button" class="deleteStudentBtn btn-danger btn-sm m-1" value="<?= $task['id']; ?>">حذف</button> <?php } ?>
+                                            </td>
+                                        </tr>
                             <?php
-                                }}
+                                    }
+                                }
                             }
                             ?>
                         </tbody>
@@ -565,48 +564,49 @@ require 'config.php';
                             $tas_query_run = mysqli_query($conn, $tas_query);
                             if (mysqli_num_rows($tas_query_run) > 0) {
                                 foreach ($tas_query_run as $task) {
-                                    $lev=explode(",",$task['level']);
-                                    if($lev[0]=='المرحلة المتوسطة'){
+                                    $lev = explode(",", $task['level']);
+                                    if ($lev[0] == 'المرحلة المتوسطة') {
                             ?>
-                                    <tr>
-                                        <td><?= $task['name'] ?></td>
-                                        <!--                                         <td><?= $task['nationality'] ?></td>
+                                        <tr>
+                                            <td><?= $task['name'] ?></td>
+                                            <!--                                         <td><?= $task['nationality'] ?></td>
                                         
                                         <td><?= $task['level'] ?></td> -->
-                                        <td><?= $task['speciality'] ?></td>
+                                            <td><?= $task['speciality'] ?></td>
 
-                                        <td>
-                                            <?= $task['level'] ?>
-                                        </td>
+                                            <td>
+                                                <?= $task['level'] ?>
+                                            </td>
 
-                                        <td>
-                                            <?= $task['subject1'] ?>
-                                            <?php if ($task['subject2'] != '') {
-                                                echo '<hr>' . $task['subject2'];
-                                            } ?>
+                                            <td>
+                                                <?= $task['subject1'] ?>
+                                                <?php if ($task['subject2'] != '') {
+                                                    echo '<hr>' . $task['subject2'];
+                                                } ?>
 
-                                            <?php if ($task['subject3'] != '') {
-                                                echo '<hr>' . $task['subject3'];
-                                            } ?>
-                                        </td>
-                                        <td>
-                                            <?= $task['clsNumber1'] ?>
-                                            <?php if ($task['clsNumber2'] != '0') {
-                                                echo '<hr>' . $task['clsNumber2'];
-                                            } ?>
-                                            <?php if ($task['clsNumber3'] != '0') {
-                                                echo '<hr>' . $task['clsNumber3'];
-                                            } ?>
-                                        </td>
-                                        <td><?= $task['comple'] ?></td>
-                                        <td class="text-center" style="display: flex;justify-content:center;vertical-align:middle">
-                                            <?php if ($fetch['rule'] != 'data_entry') { ?><button type="button" class="viewStudentBtn btn-primary btn-sm m-1" value="<?= $task['id']; ?>">عرض</button><?php } ?>
-                                            <?php if ($fetch['rule']  != 'data_entry') { ?> <button type="button" class="editStudentBtn btn-warning btn-sm m-1" value="<?= $task['id']; ?>">عدّل</button> <?php } ?>
-                                            <?php if ($fetch['rule']  != 'data_entry') { ?> <button type="button" class="deleteStudentBtn btn-danger btn-sm m-1" value="<?= $task['id']; ?>">حذف</button> <?php } ?>
-                                        </td>
-                                    </tr>
+                                                <?php if ($task['subject3'] != '') {
+                                                    echo '<hr>' . $task['subject3'];
+                                                } ?>
+                                            </td>
+                                            <td>
+                                                <?= $task['clsNumber1'] ?>
+                                                <?php if ($task['clsNumber2'] != '0') {
+                                                    echo '<hr>' . $task['clsNumber2'];
+                                                } ?>
+                                                <?php if ($task['clsNumber3'] != '0') {
+                                                    echo '<hr>' . $task['clsNumber3'];
+                                                } ?>
+                                            </td>
+                                            <td><?= $task['comple'] ?></td>
+                                            <td class="text-center" style="display: flex;justify-content:center;vertical-align:middle">
+                                                <?php if ($fetch['rule'] != 'data_entry') { ?><button type="button" class="viewStudentBtn btn-primary btn-sm m-1" value="<?= $task['id']; ?>">عرض</button><?php } ?>
+                                                <?php if ($fetch['rule']  != 'data_entry') { ?> <button type="button" class="editStudentBtn btn-warning btn-sm m-1" value="<?= $task['id']; ?>">عدّل</button> <?php } ?>
+                                                <?php if ($fetch['rule']  != 'data_entry') { ?> <button type="button" class="deleteStudentBtn btn-danger btn-sm m-1" value="<?= $task['id']; ?>">حذف</button> <?php } ?>
+                                            </td>
+                                        </tr>
                             <?php
-                                }}
+                                    }
+                                }
                             }
                             ?>
                         </tbody>
@@ -656,48 +656,49 @@ require 'config.php';
                             $tas_query_run = mysqli_query($conn, $tas_query);
                             if (mysqli_num_rows($tas_query_run) > 0) {
                                 foreach ($tas_query_run as $task) {
-                                    $lev=explode(",",$task['level']);
-                                    if($lev[0]=='المرحلة الثانوية'){
+                                    $lev = explode(",", $task['level']);
+                                    if ($lev[0] == 'المرحلة الثانوية') {
                             ?>
-                                    <tr>
-                                        <td><?= $task['name'] ?></td>
-                                        <!--                                         <td><?= $task['nationality'] ?></td>
+                                        <tr>
+                                            <td><?= $task['name'] ?></td>
+                                            <!--                                         <td><?= $task['nationality'] ?></td>
                                         
                                         <td><?= $task['level'] ?></td> -->
-                                        <td><?= $task['speciality'] ?></td>
+                                            <td><?= $task['speciality'] ?></td>
 
-                                        <td>
-                                            <?= $task['level'] ?>
-                                        </td>
+                                            <td>
+                                                <?= $task['level'] ?>
+                                            </td>
 
-                                        <td>
-                                            <?= $task['subject1'] ?>
-                                            <?php if ($task['subject2'] != '') {
-                                                echo '<hr>' . $task['subject2'];
-                                            } ?>
+                                            <td>
+                                                <?= $task['subject1'] ?>
+                                                <?php if ($task['subject2'] != '') {
+                                                    echo '<hr>' . $task['subject2'];
+                                                } ?>
 
-                                            <?php if ($task['subject3'] != '') {
-                                                echo '<hr>' . $task['subject3'];
-                                            } ?>
-                                        </td>
-                                        <td>
-                                            <?= $task['clsNumber1'] ?>
-                                            <?php if ($task['clsNumber2'] != '0') {
-                                                echo '<hr>' . $task['clsNumber2'];
-                                            } ?>
-                                            <?php if ($task['clsNumber3'] != '0') {
-                                                echo '<hr>' . $task['clsNumber3'];
-                                            } ?>
-                                        </td>
-                                        <td><?= $task['comple'] ?></td>
-                                        <td class="text-center" style="display: flex;justify-content:center;vertical-align:middle">
-                                            <?php if ($fetch['rule'] != 'data_entry') { ?><button type="button" class="viewStudentBtn btn-primary btn-sm m-1" value="<?= $task['id']; ?>">عرض</button><?php } ?>
-                                            <?php if ($fetch['rule']  != 'data_entry') { ?> <button type="button" class="editStudentBtn btn-warning btn-sm m-1" value="<?= $task['id']; ?>">عدّل</button> <?php } ?>
-                                            <?php if ($fetch['rule']  != 'data_entry') { ?> <button type="button" class="deleteStudentBtn btn-danger btn-sm m-1" value="<?= $task['id']; ?>">حذف</button> <?php } ?>
-                                        </td>
-                                    </tr>
+                                                <?php if ($task['subject3'] != '') {
+                                                    echo '<hr>' . $task['subject3'];
+                                                } ?>
+                                            </td>
+                                            <td>
+                                                <?= $task['clsNumber1'] ?>
+                                                <?php if ($task['clsNumber2'] != '0') {
+                                                    echo '<hr>' . $task['clsNumber2'];
+                                                } ?>
+                                                <?php if ($task['clsNumber3'] != '0') {
+                                                    echo '<hr>' . $task['clsNumber3'];
+                                                } ?>
+                                            </td>
+                                            <td><?= $task['comple'] ?></td>
+                                            <td class="text-center" style="display: flex;justify-content:center;vertical-align:middle">
+                                                <?php if ($fetch['rule'] != 'data_entry') { ?><button type="button" class="viewStudentBtn btn-primary btn-sm m-1" value="<?= $task['id']; ?>">عرض</button><?php } ?>
+                                                <?php if ($fetch['rule']  != 'data_entry') { ?> <button type="button" class="editStudentBtn btn-warning btn-sm m-1" value="<?= $task['id']; ?>">عدّل</button> <?php } ?>
+                                                <?php if ($fetch['rule']  != 'data_entry') { ?> <button type="button" class="deleteStudentBtn btn-danger btn-sm m-1" value="<?= $task['id']; ?>">حذف</button> <?php } ?>
+                                            </td>
+                                        </tr>
                             <?php
-                                }}
+                                    }
+                                }
                             }
                             ?>
                         </tbody>
@@ -817,11 +818,11 @@ require 'config.php';
                                     ?>
                                 </td>
                                 <td></td>
-                                
+
                             </tr>
                             <tr>
                                 <td colspan="2">نسبة المعلمين للفصول</td>
-                                <td colspan="5"><?php echo bcdiv($row1[0],10,2);?></td>
+                                <td colspan="5"><?php echo bcdiv($row1[0], 10, 2); ?></td>
                             </tr>
                         </tbody>
 
